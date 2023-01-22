@@ -17,17 +17,17 @@ type List = {
     list:List[];
   }
 interface dattas {
-    states:prop | {} ;
+    states:prop | [] ;
 }
 const Higher = (Component: React.ComponentType<any>,callurl:string) => {
 
     const Child = (states : any) => {
-        const [state, setState] = React.useState({});
+        const [state, setState] = React.useState([]);
         React.useEffect(() => {
             axis.get(callurl).then((res) => {
                 setState(res.data);
             })
-        })
+        },[])
         return <Component  states={state}/>
     }
     return Child;
